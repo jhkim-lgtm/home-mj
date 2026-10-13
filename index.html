@@ -331,7 +331,7 @@ function render(){
 function updCount(){ const sn=list.filter(r=>seen.has(r.k)).length; $('#count').innerHTML=`<b style="color:var(--txt)">${list.length}건</b> · ♥ ${favs.size}건 선택 · 👁 본 매물 ${sn}건 · ● 안 본 매물 ${list.length-sn}건`; }
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1600)}
 function toggleFav(k){ if(favs.has(k))favs.delete(k); else favs.add(k); SS('mj.favs',[...favs]); document.querySelectorAll(`[data-fav="${k}"]`).forEach(b=>{b.classList.toggle('on',favs.has(k));b.textContent=favs.has(k)?'♥':'♡'}); updCount(); if(st.fav)render(); }
-function lineOf(r){return `${PK[r.k]?'[추천 '+PK[r.k]+'] ':''}${r.dong} ${r.type} 전용 ${pyf(r)} · 월 ${won(r.rent)}/보증금 ${won(r.dep)} · ${r.addr} · ${r.floor}층 · ${r.year}년${r.st?' · '+r.st.st+'역 도보 '+mins(r.st.min):''}${r.bus&&r.bus.min!=null?' · 버스 '+mins(r.bus.min):''} · ${r.movein||''}${r.tels[0]?' · '+r.realtor+' '+r.tels.join(', '):''}${memos[r.k]?' · 메모: '+memos[r.k]:''}\n${r.url}`}
+function lineOf(r){return `${PK[r.k]?'[추천 '+PK[r.k]+'] ':''}${r.dong} ${r.type} 전용 ${pyf(r)} · 월 ${won(r.rent)}/보증금 ${won(r.dep)} · ${r.addr} · ${r.floor}층 · ${r.year}년${r.st?' · '+r.st.st+' 도보 '+mins(r.st.min):''}${r.bus&&r.bus.min!=null?' · 버스 '+mins(r.bus.min):''} · ${r.movein||''}${r.tels[0]?' · '+r.realtor+' '+r.tels.join(', '):''}${memos[r.k]?' · 메모: '+memos[r.k]:''}\n${r.url}`}
 function copy(text,msg){navigator.clipboard?.writeText(text).then(()=>toast(msg),()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast(msg)})}
 
 function open(r){ cur=r; idx=0; if(!seen.has(r.k)) setSeen(r.k,true); $('#ov').classList.add('on'); document.body.style.overflow='hidden'; drawDetail(); history.replaceState(null,'','#'+r.k); }
@@ -341,7 +341,7 @@ function drawDetail(){
   const r=cur, pos=list.findIndex(x=>x.k===r.k);
   const kv=[['주소',r.addr+(r.loc==='approx'?' (동까지만 공개)':'')],['유형',`${r.type}${r.sub&&r.sub!==r.type?` · ${r.sub}`:''}${r.usage?` · 용도 ${r.usage}`:''}`],['면적',`전용 ${pyf(r)}${r.excl?` (${r.excl}㎡)`:''}`],
     ['층·구조',`${r.floor}층${r.top?' (탑층)':''}${r.rooms?` · 방 ${r.rooms}`:''}${r.baths?` · 욕실 ${r.baths}`:''}${r.dir?` · ${r.dir}`:''}`],['세대수',r.hh?`${r.hh}세대 (건축물대장)`:'미기재 · 중개사 확인'],['사용승인',r.apr||'-'],['입주',r.movein||'미기재'],['주차',r.park||'미기재'],['관리비',r.manage||'미기재'],
-    ['지하철',r.st?`${r.st.st}역(${r.st.lines.join('·')}) 도보 ${mins(r.st.min)} · ${r.st.m}m${r.st2?` / ${r.st2.st}역 ${mins(r.st2.min)}`:''}`:'-'],['버스정류장',r.bus&&r.bus.min!=null?`${r.bus.name} 도보 ${mins(r.bus.min)} · ${r.bus.m}m`:'자료 없음'],
+    ['지하철',r.st?`${r.st.st}(${r.st.lines.join('·')}) 도보 ${mins(r.st.min)} · ${r.st.m}m${r.st2?` / ${r.st2.st} ${mins(r.st2.min)}`:''}`:'-'],['버스정류장',r.bus&&r.bus.min!=null?`${r.bus.name} 도보 ${mins(r.bus.min)} · ${r.bus.m}m`:'자료 없음'],
     ['물(강·하천)',r.river?`${r.river[1]} ${r.river[0]}m${r.lake?` · ${r.lake[1]} ${r.lake[0]}m`:''}`:'-'],['지형',r.elev!=null?`해발 ${r.elev}m · 주변 150m 대비 ${r.prom>0?'+':''}${r.prom}m${r.open&&r.open.length?` · 트인 방향 ${r.open.join('·')}`:''}`:'-'],
     ['원문 확인일',r.confirm||'-'],['처음 발견',r.firstSeen||'-'],['가격 변동',r.chg||'없음'],['중개사',r.realtor||'-']].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
   const thumbs=r.nph?Array.from({length:r.nph},(_,i)=>`<img src="${img(r,i+1,1)}" data-i="${i}" class="${i===idx?'on':''}" alt="">`).join(''):'';
@@ -388,7 +388,7 @@ function initMap(r){
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap contributors'}).addTo(LMAP);
     if(r.loc==='approx'){ L.circle([r.lat,r.lon],{radius:100,color:'#ff3c3c',weight:2,fillColor:'#ff6b6b',fillOpacity:.18}).addTo(LMAP); L.circleMarker([r.lat,r.lon],{radius:6,color:'#fff',weight:2,fillColor:'#ff3c3c',fillOpacity:1}).addTo(LMAP).bindTooltip('추정 위치 (반경 100m)',{permanent:true,direction:'top',offset:[0,-8]}); }
     else { L.marker([r.lat,r.lon]).addTo(LMAP).bindTooltip(r.addr||'매물',{permanent:true,direction:'top',offset:[-15,-12]}); }
-    if(r.st&&D.stations){ const s=D.stations[r.st.st]; if(s) L.circleMarker([s.lat,s.lon],{radius:8,color:'#fff',weight:2,fillColor:'#3478f6',fillOpacity:1}).addTo(LMAP).bindTooltip(`${r.st.st}역 · 도보 ${mins(r.st.min)}`,{permanent:true,direction:'right',offset:[8,0]}); }
+    if(r.st&&D.stations){ const s=D.stations[r.st.st]; if(s) L.circleMarker([s.lat,s.lon],{radius:8,color:'#fff',weight:2,fillColor:'#3478f6',fillOpacity:1}).addTo(LMAP).bindTooltip(`${r.st.st} · 도보 ${mins(r.st.min)}`,{permanent:true,direction:'right',offset:[8,0]}); }
     setTimeout(()=>LMAP.invalidateSize(),50);
   }catch(e){ el.innerHTML=r.map?`<img src="${r.map}" alt="">`:''; }
 }
