@@ -182,9 +182,62 @@ h3{font-size:14px;color:var(--txt2);margin:16px 0 8px;font-weight:700}
   .badges{top:6px;left:6px}.src{top:6px;right:6px}.bd{font-size:11px;padding:2px 6px}
   .search{min-width:0;flex:1}
 }
+
+/* Monthly rent and exclusive area lead every listing. */
+.price.listing-title{display:block;margin:0;color:var(--txt);font-size:20px;line-height:1.4;white-space:nowrap;letter-spacing:-.5px}
+.costline,.info-line{display:flex;flex-wrap:wrap;gap:4px 12px;color:var(--txt2);font-size:13px;line-height:1.6;margin-top:4px}
+.costline span,.info-line span{white-space:nowrap}
+.title{white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;line-height:1.6;margin-top:9px}
+.sub{white-space:normal;overflow:visible;text-overflow:clip;word-break:keep-all;overflow-wrap:anywhere;line-height:1.6;margin-top:4px}
+.listing-address{padding-top:7px;margin-top:7px;border-top:1px solid var(--line)}
+.body{padding:14px 14px 16px}
+.dhead h2{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.5}
+.head-primary{display:block;white-space:nowrap}
+.head-secondary{display:block;color:var(--txt2);font-size:13px;font-weight:600;word-break:keep-all;overflow-wrap:anywhere;margin-top:2px}
+.bigprice{font-size:24px;line-height:1.5;white-space:nowrap}
+.detail-cost{margin:0 0 10px}
+.kv{gap:9px 12px;line-height:1.65}
+.kv dd,.why,.rbox,.reasons,.rintro,.crit,.addrbox,.desc,.foot{word-break:keep-all;overflow-wrap:anywhere}
+.why li,.rbox li{margin:5px 0}
+.rintro h2 small,.rintro h2>span{display:block;margin-top:4px;line-height:1.6}
+.foot p{margin:0 0 10px}
+.badges{flex-wrap:wrap;max-width:calc(100% - 105px)}
+.tagsrow{line-height:1.5}
+@media (max-width:900px){
+  .top .tabs{flex:1 1 100%;order:3;max-width:100%;overflow-x:auto}
+  .tabs button{white-space:nowrap;flex:none}
+  .crit{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
+}
+@media (max-width:560px){
+  .wrap{padding:0 12px}
+  .grid{grid-template-columns:1fr;gap:16px}
+  .body{padding:14px 16px 16px}
+  .price.listing-title{font-size:21px}
+  .title{font-size:15px}
+  .sub,.costline,.info-line{font-size:14px}
+  .tagsrow{display:flex}
+  .heart{display:flex;width:36px;height:36px;top:38px}
+  .nph{display:block}
+  .ph{aspect-ratio:16/10}
+  .why .rt{font-size:15px}
+  .why ul,.rbox ul,.reasons{font-size:14px;line-height:1.7}
+  .rintro{padding:16px}
+  .rintro p{line-height:1.7}
+  .crit{grid-template-columns:1fr;gap:12px}
+  .dhead{flex-wrap:wrap;padding:12px;gap:8px;align-items:flex-start}
+  .dhead h2{flex:1 1 calc(100% - 48px);font-size:17px}
+  .dhead .x{order:2;flex:none}
+  .dhead .nav{order:3;width:100%;justify-content:space-between}
+  .bigprice{font-size:22px}
+  .kv{grid-template-columns:76px minmax(0,1fr);font-size:14px}
+  .col{padding:16px}
+  .meta .act{width:100%}
+  .sech{flex-wrap:wrap;gap:3px 10px}
+}
+@media (max-width:359px){.price.listing-title{font-size:19px}.bigprice{font-size:20px}.head-primary{font-size:16px}}
 </style>
 <style>
-.scorebar{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:8px 0 2px}
+.scorebar{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin:8px 0 2px}
 .scorebar div{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:8px;padding:5px 7px;font-size:11.5px;line-height:1.3;color:var(--txt2)}
 .scorebar b{display:block;font-size:14px;color:var(--txt)}
 .scorebar .ok b{color:#34c77b}.scorebar .mid b{color:#ffd48a}
@@ -235,8 +288,8 @@ h3{font-size:14px;color:var(--txt2);margin:16px 0 8px;font-weight:700}
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">조건에 맞는 매물이 없습니다. 필터를 조금 풀어보세요.</div>
   <div class="foot">
-    월세·보증금 단위는 만원이며 네이버·직방·다방 원문 기준입니다. 실제 조건(입주일·관리비·반려동물·전입신고)은 중개사 통화로 확인하세요.<br>
-    도보 시간은 OpenStreetMap 보행 경로(OSRM) 기준이고, 버스정류장 위치는 OpenStreetMap 자료라 일부 정류장이 빠져 있을 수 있습니다. 층간소음은 거주 후기가 공개되지 않는 빌라·단독 특성상 사용승인 연도(2000년 이후만 표시)·탑층·단독 여부·설명문으로 가늠한 참고 점수입니다. 💧 수(水) 기운은 강·하천·호수와의 거리, 지명의 물 글자(옥수·성수·빙고·금호 등), 북쪽 방위, 저지대 여부로 계산한 참고 점수이며 사주 상담을 대신하지 않습니다. ♥ 선택·메모·👁 본 매물 표시는 이 브라우저에만 저장됩니다. 지도는 © OpenStreetMap contributors, 다방 매물은 동까지만 공개돼 추정 위치(반경 100m)입니다. 매일 아침 신규 매물을 추가하고 내려간 매물은 제외합니다.
+    <p>월세·보증금 단위는 만원이며 네이버·직방·다방 원문 기준입니다. 실제 조건(입주일·관리비·반려동물·전입신고)은 중개사 통화로 확인하세요.</p>
+    <p>도보 시간은 OpenStreetMap 보행 경로(OSRM) 기준이고, 버스정류장 위치는 OpenStreetMap 자료라 일부 정류장이 빠져 있을 수 있습니다. 층간소음은 거주 후기가 공개되지 않는 빌라·단독 특성상 사용승인 연도(2000년 이후만 표시)·탑층·단독 여부·설명문으로 가늠한 참고 점수입니다. 💧 수(水) 기운은 강·하천·호수와의 거리, 지명의 물 글자(옥수·성수·빙고·금호 등), 북쪽 방위, 저지대 여부로 계산한 참고 점수이며 사주 상담을 대신하지 않습니다. ♥ 선택·메모·👁 본 매물 표시는 이 브라우저에만 저장됩니다. 지도는 © OpenStreetMap contributors, 다방 매물은 동까지만 공개돼 추정 위치(반경 100m)입니다. 매일 아침 신규 매물을 추가하고 내려간 매물은 제외합니다.</p>
   </div>
 </main>
 
@@ -258,6 +311,7 @@ const DEF={q:'',dong:'',type:'',src:'',dep:49000,rent:290,stmin:10,busmin:5,year
 const st={...DEF}; const saved=LS('mj.st'); if(saved) Object.assign(st,saved);
 const won=v=>v==null?'-':(v>=10000?(v/10000).toFixed(v%10000?1:0)+'억':Math.round(v).toLocaleString('ko-KR')+'만');
 const pyf=r=>r.py?`${r.py.toFixed(r.py%1?1:0)}평`:'-';
+const listingTitle=r=>`월세 ${won(r.rent)} / 전용 ${pyf(r)}`;
 const img=(r,i,t)=>`img/${r.k}/${t?'t':''}${i}.jpg`;
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const mins=v=>v==null?'-':`${Math.round(v)}분`;
@@ -308,9 +362,12 @@ function card(r){
     <button class="eye ${seen.has(r.k)?'on':''}" data-eye="${r.k}" title="본 매물 표시">${seen.has(r.k)?'👁 봤음':'● 안 봄'}</button>
     ${r.nph?`<span class="nph">📷 ${r.nph}${r.full?'':' / '+r.nsrc}</span>`:'<span class="nph">사진 없음</span>'}</div>
   <div class="body">
-    <div class="price">월 ${won(r.rent)}<small>보증금 ${won(r.dep)}${r.manage?` · 관리비 ${esc(r.manage)}`:''}</small></div>
-    <div class="title">${esc(r.dong)} · ${esc(r.type)}${r.sub&&r.sub!==r.type?` (${esc(r.sub)})`:''} · 전용 ${pyf(r)}${r.excl?` (${r.excl}㎡)`:''}</div>
-    <div class="sub">${esc(r.addr)} · ${esc(r.floor)}층${r.rooms?` · 방 ${esc(r.rooms)}`:''}${r.baths?` · 🛁 ${r.baths}`:''} · ${r.year}년 · ${esc(r.movein||'입주 미기재')}</div>
+    <h3 class="price listing-title">${esc(listingTitle(r))}</h3>
+    <div class="costline"><span>보증금 ${won(r.dep)}</span>${r.manage?`<span>관리비 ${esc(r.manage)}</span>`:''}</div>
+    <div class="title">${esc(r.dong)} · ${esc(r.type)}${r.sub&&r.sub!==r.type?` (${esc(r.sub)})`:''}</div>
+    <div class="sub listing-address">${esc(r.addr)}</div>
+    <div class="info-line"><span>${esc(r.floor)}층</span>${r.rooms?`<span>방 ${esc(r.rooms)}</span>`:''}${r.baths?`<span>욕실 ${r.baths}</span>`:''}<span>${r.year}년 준공</span></div>
+    <div class="sub">입주 ${esc(r.movein||'미기재')}</div>
     ${bars(r)}
     <div class="reasons">${why.map(w=>`· ${esc(w)}`).join('<br>')}${r.caution.length?`<br><span class="cau">⚠️ ${esc(r.caution.join(' · '))}</span>`:''}</div>
     ${r.map?`<div class="mapw"><img loading="lazy" src="${r.map}" alt=""><div class="addr">📍 ${esc(r.addr)}${r.loc==='approx'?' <b>· 동까지만 공개 · 추정 위치</b>':''}</div></div>`:''}
@@ -331,7 +388,7 @@ function render(){
 function updCount(){ const sn=list.filter(r=>seen.has(r.k)).length; $('#count').innerHTML=`<b style="color:var(--txt)">${list.length}건</b> · ♥ ${favs.size}건 선택 · 👁 본 매물 ${sn}건 · ● 안 본 매물 ${list.length-sn}건`; }
 function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('on'),1600)}
 function toggleFav(k){ if(favs.has(k))favs.delete(k); else favs.add(k); SS('mj.favs',[...favs]); document.querySelectorAll(`[data-fav="${k}"]`).forEach(b=>{b.classList.toggle('on',favs.has(k));b.textContent=favs.has(k)?'♥':'♡'}); updCount(); if(st.fav)render(); }
-function lineOf(r){return `${PK[r.k]?'[추천 '+PK[r.k]+'] ':''}${r.dong} ${r.type} 전용 ${pyf(r)} · 월 ${won(r.rent)}/보증금 ${won(r.dep)} · ${r.addr} · ${r.floor}층 · ${r.year}년${r.st?' · '+r.st.st+' 도보 '+mins(r.st.min):''}${r.bus&&r.bus.min!=null?' · 버스 '+mins(r.bus.min):''} · ${r.movein||''}${r.tels[0]?' · '+r.realtor+' '+r.tels.join(', '):''}${memos[r.k]?' · 메모: '+memos[r.k]:''}\n${r.url}`}
+function lineOf(r){return [listingTitle(r),`${r.dong} · ${r.type}`,PK[r.k]?'추천 '+PK[r.k]:'',`보증금 ${won(r.dep)}${r.manage?' · 관리비 '+r.manage:''}`,r.addr,[r.st?r.st.st+' 도보 '+mins(r.st.min):'',r.bus&&r.bus.min!=null?'버스 '+mins(r.bus.min):''].filter(Boolean).join(' · '),`${r.floor}층${r.rooms?' · 방 '+r.rooms:''}${r.baths?' · 욕실 '+r.baths:''} · ${r.year}년 준공`,`입주 ${r.movein||'미기재'}`,r.tels.length?`${r.realtor||'중개사'} ${r.tels.join(', ')}`:'',memos[r.k]?'메모: '+memos[r.k]:'',r.url].filter(Boolean).join('\n')}
 function copy(text,msg){navigator.clipboard?.writeText(text).then(()=>toast(msg),()=>{const ta=document.createElement('textarea');ta.value=text;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast(msg)})}
 
 function open(r){ cur=r; idx=0; if(!seen.has(r.k)) setSeen(r.k,true); $('#ov').classList.add('on'); document.body.style.overflow='hidden'; drawDetail(); history.replaceState(null,'','#'+r.k); }
@@ -345,12 +402,13 @@ function drawDetail(){
     ['물(강·하천)',r.river?`${r.river[1]} ${r.river[0]}m${r.lake?` · ${r.lake[1]} ${r.lake[0]}m`:''}`:'-'],['지형',r.elev!=null?`해발 ${r.elev}m · 주변 150m 대비 ${r.prom>0?'+':''}${r.prom}m${r.open&&r.open.length?` · 트인 방향 ${r.open.join('·')}`:''}`:'-'],
     ['원문 확인일',r.confirm||'-'],['처음 발견',r.firstSeen||'-'],['가격 변동',r.chg||'없음'],['중개사',r.realtor||'-']].map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join('');
   const thumbs=r.nph?Array.from({length:r.nph},(_,i)=>`<img src="${img(r,i+1,1)}" data-i="${i}" class="${i===idx?'on':''}" alt="">`).join(''):'';
-  $('#dlg').innerHTML=`<div class="dhead"><h2>${PK[r.k]?`<span style="color:var(--amber)">추천 ${PK[r.k]}</span> `:''}${esc(r.dong)} · ${esc(r.type)} · 월 ${won(r.rent)} / ${won(r.dep)}</h2>
+  $('#dlg').innerHTML=`<div class="dhead"><h2><span class="head-primary">${esc(listingTitle(r))}</span><span class="head-secondary">${esc(r.dong)} · ${esc(r.type)}${PK[r.k]?` · 추천 ${PK[r.k]}`:''}</span></h2>
       <div class="nav"><button id="prev" ${pos<=0?'disabled':''}>← 이전</button><button id="next" ${pos>=list.length-1?'disabled':''}>다음 →</button></div><button class="x" id="close">✕</button></div>
     <div class="gal"><div class="main" id="main">${r.nph?`<img id="mainimg" src="${img(r,1,0)}" alt=""><div class="cnt" id="cnt">1 / ${r.nph}</div><div class="ar l" id="al">‹</div><div class="ar r" id="ar">›</div>`:'<div class="none">원문에 사진이 없는 매물입니다</div>'}</div>
       ${thumbs?`<div class="thumbs" id="thumbs">${thumbs}</div>`:''}</div>
     <div class="dbody"><div class="col">
-      <div class="bigprice">월 ${won(r.rent)}<small>보증금 ${won(r.dep)}</small>${r.rent&&r.py?`<small>평당 ${Math.round(r.rent/r.py*10)/10}만</small>`:''}</div>
+      <div class="bigprice">${esc(listingTitle(r))}</div>
+      <div class="costline detail-cost"><span>보증금 ${won(r.dep)}</span>${r.manage?`<span>관리비 ${esc(r.manage)}</span>`:''}${r.rent&&r.py?`<span>평당 ${Math.round(r.rent/r.py*10)/10}만</span>`:''}</div>
       <div class="tagsrow" style="margin:0 0 12px">${r.pass?'<span class="tg g">✅ 6개 조건 통과</span>':r.fails.map(f=>`<span class="tg a">✖ ${esc(f)}</span>`).join('')}${r.top?'<span class="tg b">탑층</span>':''}<span class="tg">${SRCN[r.src]}</span>${r.tags?r.tags.split(',').filter(Boolean).map(t=>`<span class="tg">${esc(t)}</span>`).join(''):''}</div>
       ${bars(r)}
       <div style="margin:10px 0 0">${sec('🚇','교통',r.s.tr,r.why.tr)}${sec('🏞','조망',r.s.view,r.why.view)}${sec('🔇','층간소음 안심',r.s.noise,r.why.noise)}${sec('💧','수(水) 기운',r.s.water,r.why.water)}${(r.why.price.length||r.why.cond.length)?sec('💰','가격·컨디션',r.s.price+r.s.cond,[...r.why.price,...r.why.cond]):''}${r.caution.length?`<div class="rbox" style="border-color:rgba(255,212,138,.5)"><div class="rt">⚠️ 확인할 점</div><ul>${r.caution.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>`:''}</div>
