@@ -200,7 +200,7 @@ h3{font-size:14px;color:var(--txt2);margin:16px 0 8px;font-weight:700}
 <header><div class="wrap">
   <div class="top">
     <h1>🏠 문정 님 이사 매물 <small id="subt">네이버부동산 · 직방 · 다방</small></h1>
-    <div class="tabs"><button class="on" data-tab="pick">⭐ 추천 20</button><button data-tab="new">🆕 신규</button><button data-tab="pass">✅ 조건 통과</button><button data-tab="all">전체 후보</button></div>
+    <div class="tabs"><button class="on" data-tab="pick">⭐ 추천 100</button><button data-tab="new">🆕 신규</button><button data-tab="pass">✅ 조건 통과</button><button data-tab="all">전체 후보</button></div>
     <div class="grow"></div>
     <div class="search">🔍<input id="q" placeholder="동·주소·역·설명 검색" autocomplete="off"></div>
     <button class="chip" id="ftog">필터 ▾</button>
@@ -322,7 +322,7 @@ function render(){
   $('#empty').style.display=list.length?'none':'block';
   const ri=$('#rintro'); const C=D.criteria;
   const crit=`<div class="crit"><div><b>① 교통</b>가장 가까운 지하철역까지 걸어서 ${C.st_min}분 이내, 버스정류장 ${C.bus_min}분 이내 (보행 경로 기준)</div><div><b>② 조망</b>설명문의 뷰·조망·테라스 언급, 탑층·고층, 주변보다 높은 지형(고도 자료)으로 점수</div><div><b>③ 주차</b>조건에서 제외(주차 유무 무관)</div><div><b>④ 층간소음</b>2000년 이전 준공은 제외. 신축일수록·탑층·단독·2세대 이하면 가점, 20세대 이상·상가 위층은 감점</div><div><b>⑤ 가격</b>보증금 ${won(C.dep)} 미만 · 월세 ${C.rent}만 미만 (필터로 조절 가능)</div><div><b>⑥ 수(水) 기운</b>강·하천·호수 거리, 지명의 물 글자, 북쪽 방위, 저지대로 참고 점수</div></div>`;
-  if(tab==='pick'){ ri.classList.add('on'); ri.innerHTML=`<h2>⭐ 문정 님 추천 ${D.picks.length}건 <small style="font-size:12px;color:var(--txt3);font-weight:600">조건 통과 ${D.nPass}건 중 종합 점수 상위 · 같은 건물은 1건만 · 점검 ${D.built}</small></h2><p>여섯 가지 조건을 모두 통과한 매물 가운데 조망·층간소음·수 기운·가격 효율을 합산해 고른 20건입니다. 카드의 점수 네 칸은 각각 10점 만점이고, 상세를 열면 점수 근거와 원문 설명·지도·연락처가 나옵니다. 마음에 드는 집은 ♥로 모아 '선택 목록 복사'로 중개사에게 바로 보낼 수 있습니다.</p>${crit}<div class="rnote">매일 아침 새로 올라온 매물을 🆕 탭에 추가하고, 내려간 매물은 뺍니다. 조건을 바꾸고 싶으면 '조건 통과' 탭에서 필터를 움직여 보세요.</div>`; }
+  if(tab==='pick'){ ri.classList.add('on'); ri.innerHTML=`<h2>⭐ 문정 님 추천 ${D.picks.length}건 <small style="font-size:12px;color:var(--txt3);font-weight:600">조건 통과 ${D.nPass}건 중 종합 점수 상위 · 같은 건물은 1건만 · 점검 ${D.built}</small></h2><p>여섯 가지 조건을 모두 통과한 매물 가운데 조망·층간소음·수 기운·가격 효율을 합산해 순서대로 고른 100건입니다. 카드의 점수 네 칸은 각각 10점 만점이고, 상세를 열면 점수 근거와 원문 설명·지도·연락처가 나옵니다. 마음에 드는 집은 ♥로 모아 '선택 목록 복사'로 중개사에게 바로 보낼 수 있습니다.</p>${crit}<div class="rnote">매일 아침 새로 올라온 매물을 🆕 탭에 추가하고, 내려간 매물은 뺍니다. 조건을 바꾸고 싶으면 '조건 통과' 탭에서 필터를 움직여 보세요.</div>`; }
   else if(tab==='new'){ ri.classList.add('on'); const n=ALL.filter(r=>r.isNew).length; ri.innerHTML=`<h2>🆕 신규 매물 ${n}건 <small style="font-size:12px;color:var(--txt3);font-weight:600">최근 ${D.newWindow}일 안에 처음 올라온 매물 · 매일 아침 재수집 · 점검 ${D.built}</small></h2><p>조건 필터(보증금·월세·도보·준공)를 통과한 신규만 보입니다. 필터를 풀면 더 보입니다.</p>`; }
   else if(tab==='pass'){ ri.classList.add('on'); ri.innerHTML=`<h2>✅ 조건 통과 ${list.length}건 <small style="font-size:12px;color:var(--txt3);font-weight:600">현재 필터 기준 · 전체 후보 ${ALL.length}건</small></h2>${crit}`; }
   else { ri.classList.add('on'); ri.innerHTML=`<h2>전체 후보 ${list.length}건 <small style="font-size:12px;color:var(--txt3);font-weight:600">가격·준공·전용 필터만 적용 · 도보 조건 미달은 빨간 배지로 표시</small></h2>`; }
